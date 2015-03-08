@@ -2,7 +2,8 @@ Django + Angular seed project w. docker dev environment
 =====================================================
 
 Stack:
-* PostgreSQL RDBMS
+* Python 3.4
+* PostgreSQL
 * Django web framework
 * Jade templates
 * Stylus css preprocessor
@@ -27,3 +28,13 @@ docker-compose up
 ```
 
 App should be up on http://localhost:80000/
+
+
+Todo:
+=============
+unit, e2e testing setup
+django rest framework with sample usage in sample app
+jshint frontend source
+
+document django management workflow (dbshell, syncdb, loaddata, etc)
+document database management workflow (shell, backup/restore)
