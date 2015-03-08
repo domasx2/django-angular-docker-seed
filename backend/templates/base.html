@@ -1,0 +1,24 @@
+{# this is base template that contains js/css includes #}
+{% load staticfiles %}
+
+<!doctype html>
+<html lang="en" ng-app="myapp">
+<head>
+    <meta charset="utf-8">
+    <title>My application</title>
+    <link rel="stylesheet" href="{% static 'dist/bower.css' %}">
+    <link rel="stylesheet" href="{% static 'dist/style.css' %}">
+</head>
+<body>
+    {% block "content" %}{% endblock %}
+    <script src="{% static 'dist/bower.js' %}"></script>
+    <script src="{% static 'dist/app.js' %}"></script>
+    <script src="{% static 'dist/templates.js' %}"></script>
+    <script>
+        //insert livereload snippet on localhost TODO: on debug instead
+        if(location.host.split(':')[0] === 'localhost' ) {
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');
+        }
+    </script>
+</body>
+</html>

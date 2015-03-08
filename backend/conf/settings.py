@@ -81,6 +81,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+TEMPLATE_DIRS = (
+    '/src/templates/',
+)
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
@@ -90,10 +94,3 @@ STATICFILES_DIRS = (
 )
 
 STATIC_URL = '/static/'
-
-TEMPLATE_LOADERS = (
-    ('pyjade.ext.django.Loader',(
-        'django.template.loaders.filesystem.Loader',
-        'django.template.loaders.app_directories.Loader',
-    )),
-)

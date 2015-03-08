@@ -3,6 +3,3 @@ psycopg2==2.6
 
 #django framework itself
 Django==1.7.5
-
-#jade templates for python
-pyjade==3.0.0

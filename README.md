@@ -6,8 +6,8 @@ Stack:
 * Django web framework
 * Jade templates
 * Stylus css preprocessor
-* AngularJS js framework
-* Bootstrap  css framework
+* AngularJS frontend framework
+* Bootstrap3  css framework
 
 
 Docker dev environent requires latest docker, see https://docs.docker.com/installation/

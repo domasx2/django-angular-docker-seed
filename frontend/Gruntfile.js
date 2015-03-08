@@ -6,7 +6,7 @@ module.exports = function(grunt) {
       templates: ['dist/templates']
     },
     ngtemplates:  {
-      compile: {
+      myapp: {
         cwd: 'dist/',
         module: 'bugzez',
         src: 'templates/**/*.html',
@@ -43,6 +43,9 @@ module.exports = function(grunt) {
       javascript: {
         files: ['src/js/**/*.js'],
         tasks: ['javascript']
+      },
+      options: {
+        livereload: true,
       }
     },
     browserify: {
@@ -70,6 +73,10 @@ module.exports = function(grunt) {
       all: {
         dest: 'dist/bower.js',
         cssDest: 'dist/bower.css',
+        dependencies: {
+          angular: ['jquery'],
+          bootstrap: ['jquery']
+        }
       }
     }
   });
@@ -83,7 +90,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-exorcise');
   grunt.loadNpmTasks('grunt-bower-concat');
 
-  grunt.task.registerTask('templates', ['jade:compile', 'ngtemplates:compile', 'clean:templates']);
+  grunt.task.registerTask('templates', ['jade:compile', 'ngtemplates:myapp', 'clean:templates']);
   grunt.task.registerTask('javascript', ['browserify:dist', 'exorcise']);
 
   grunt.task.registerTask('build', ['clean:dist', 'bower_concat:all', 'templates', 'stylus:compile', 'javascript']);
