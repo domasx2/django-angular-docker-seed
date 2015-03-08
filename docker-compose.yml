@@ -1,0 +1,29 @@
+dbdata:
+    image: postgres
+    command: true
+
+db:
+    image: postgres
+    environment:
+        POSTGRES_USER: django
+        POSTRES_PASSWORD: django123
+    volumes_from:
+        - dbdata
+    ports:
+        - "9432:5432"
+frontend:
+    build: frontend/
+    ports:
+        - "35729:35729"
+    volumes:
+        - "frontend/src:/src"
+        - "frontend/dist:/dist"
+django:
+    build: .
+    ports:
+        - "8000:8000"
+    volumes:
+        - "backend:/src"
+        - "frontend:/static"
+    links:
+        - db
