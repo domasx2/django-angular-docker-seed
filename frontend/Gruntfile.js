@@ -8,7 +8,6 @@ module.exports = function(grunt) {
     ngtemplates:  {
       myapp: {
         cwd: 'dist/',
-        module: 'bugzez',
         src: 'templates/**/*.html',
         dest: 'dist/templates.js'
       }
