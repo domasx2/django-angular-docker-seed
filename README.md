@@ -20,7 +20,7 @@ Build and run
 #build images
 docker-compose build
 
-#run initial data migrations
+#run initial schema & data migrations
 docker-compose run django syncdb
 
 #start containers
@@ -30,11 +30,27 @@ docker-compose up
 App should be up on http://localhost:80000/
 
 
+Django management commands
+==================
+
+```sh
+# run any dango management command:
+
+docker-compose run django [command]
+
+# schema & data migrations
+docker-compose run django syncdb
+
+# create a super user
+docker-compose run django createsuperuser
+
+# create migrations
+docker-compose run django makemigrations [app name]
+```
+
 Todo:
 =============
 unit, e2e testing setup
 django rest framework with sample usage in sample app
-jshint frontend source
-
 document django management workflow (dbshell, syncdb, loaddata, etc)
 document database management workflow (shell, backup/restore)

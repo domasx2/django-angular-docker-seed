@@ -1,18 +1,23 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
+
+    //remove build artifacts from dist
     clean: {
       dist: ['dist/*'],
       templates: ['dist/templates']
     },
+
+    //compile html templates into a javascript file that preloads them to ng template cache
     ngtemplates:  {
       myapp: {
-        cwd: 'dist/',
-        module: 'bugzez',
-        src: 'templates/**/*.html',
+        cwd: 'dist/templates',
+        src: '**/*',
         dest: 'dist/templates.js'
       }
     },
+
+    //compile jade templates to html templates
     jade: {
       compile: {
         files: [{
@@ -20,10 +25,12 @@ module.exports = function(grunt) {
           cwd: 'src',
           src: ['templates/**/*.jade'],
           dest: 'dist/',
-          ext: '.html'
+          ext: ''
         }]
       }
     },
+
+    //compile css
     stylus: {
       compile: {
         files: {
@@ -31,6 +38,8 @@ module.exports = function(grunt) {
         }
       }
     },
+
+    //watch sources and recompile on change
     watch: {
       templates: {
         files: ['src/templates/**/*.jade'],
@@ -42,12 +51,14 @@ module.exports = function(grunt) {
       },
       javascript: {
         files: ['src/js/**/*.js'],
-        tasks: ['javascript']
+        tasks: ['jshint', 'javascript']
       },
       options: {
         livereload: true,
       }
     },
+
+    //browserify angular app into a single file
     browserify: {
       dist: {
         files: {
@@ -60,6 +71,8 @@ module.exports = function(grunt) {
         }
       }
     },
+
+    //extract source maps
     exorcise: {
       bundle: {
         options: {},
@@ -69,14 +82,38 @@ module.exports = function(grunt) {
       }
     },
 
+    //copy bower components to dist
+    copy: {
+      bower: {
+        files: [
+          // includes files within path and its sub-directories 
+          {expand: true, src: ['bower_components/**'], dest: 'dist/'},
+        ]
+      }
+    },
+
+    //concat bower deps
     bower_concat: {
       all: {
         dest: 'dist/bower.js',
         cssDest: 'dist/bower.css',
         dependencies: {
-          angular: ['jquery'],
-          bootstrap: ['jquery']
-        }
+          angular: ['jquery']
+        },
+        exclude: ['bootstrap']
+      }
+    },
+
+
+    //validate javascript
+    jshint: {
+      all: ['src/js/**/*.js'],
+      options: {
+        browser: true,
+        devel: true,
+        noempty: false,
+        plusplus: true,
+        globals: ['$', 'jQuery', 'angular', 'require']
       }
     }
   });
@@ -89,10 +126,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-exorcise');
   grunt.loadNpmTasks('grunt-bower-concat');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   grunt.task.registerTask('templates', ['jade:compile', 'ngtemplates:myapp', 'clean:templates']);
   grunt.task.registerTask('javascript', ['browserify:dist', 'exorcise']);
 
-  grunt.task.registerTask('build', ['clean:dist', 'bower_concat:all', 'templates', 'stylus:compile', 'javascript']);
+  grunt.task.registerTask('build', ['clean:dist', 'copy:bower', 'bower_concat:all', 'templates', 'stylus:compile', 'javascript']);
   grunt.task.registerTask('develop', ['build', 'watch']);
 };

@@ -3,3 +3,6 @@ psycopg2==2.6
 
 #django framework itself
 Django==1.7.5
+
+#rest framework
+djangorestframework==3.1.0
