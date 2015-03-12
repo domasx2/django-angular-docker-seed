@@ -52,5 +52,7 @@ Todo:
 =============
 unit, e2e testing setup
 django rest framework with sample usage in sample app
-document django management workflow (dbshell, syncdb, loaddata, etc)
-document database management workflow (shell, backup/restore)
+document usage on windows & mac  
+document project layout  
+document django management workflow (dbshell, syncdb, loaddata, etc)  
+document database management workflow (shell, backup/restore)  
