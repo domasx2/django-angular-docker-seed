@@ -1,3 +1,3 @@
-angular.module('myapp', []);
+angular.module('myapp', ['ngRoute', 'ngResource']);
 
 require('./sample');

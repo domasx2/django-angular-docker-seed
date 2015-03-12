@@ -5,7 +5,6 @@ from django.conf.urls.static import static
 
 urlpatterns = patterns('',
     url(r'^$', 'apps.sampleapp.views.index', name='index'),
-    url(r'^sampleapp/', include('apps.sampleapp.urls')),
-
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^api/', include('apps.sampleapp.urls')),
+    url(r'^admin/', include(admin.site.urls))
 )

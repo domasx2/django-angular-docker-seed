@@ -1,0 +1,21 @@
+.task-list.panel.panel-default
+    .panel-heading
+        h3.panel-title Tasks
+    .panel-body
+        .alert.alert-info
+            strong Hello!
+            | 
+            | This is an example task list app.
+        ul.list-group(ng-if="tasks.length")
+            li.list-group-item.task(ng-repeat="task in tasks")
+                p(ng-click="ctrl.update(task)")
+                    strong {{task.created_at | date : 'short'}} 
+                    | 
+                    | {{task.text}}
+                a.remove(ng-click="ctrl.remove($index)", title="remove")
+                    i.glyphicon.glyphicon-remove
+        p(ng-if="!tasks.length") No tasks yet. Please enter one
+        form(name="form")
+            .form-group
+                input.form-control(type="text", placeholder="Enter a task...", ng-model="new_task.text", required)
+                button(type="submit").btn.btn-primary(ng-click="ctrl.save()", ng-disabled="!form.$valid") {{ new_task.id ? 'Update task' : 'Add task' }}
