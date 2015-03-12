@@ -12,7 +12,7 @@ module.exports = function(grunt) {
     ngtemplates:  {
       myapp: {
         cwd: 'dist/templates',
-        src: '**/*',
+        src: '**/*.html',
         dest: 'dist/templates.js'
       }
     },
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
           cwd: 'src',
           src: ['templates/**/*.jade'],
           dest: 'dist/',
-          ext: ''
+          ext: '.html'
         }]
       }
     },
