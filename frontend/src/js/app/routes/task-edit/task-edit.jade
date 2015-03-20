@@ -1,0 +1,8 @@
+.task-list.panel.panel-default
+    .panel-heading
+        h3.panel-title {{ taskData.id ? 'Update task' : 'Create task' }}
+    .panel-body
+       form(name="form", ng-submit="ctrl.update(form)")
+            .form-group 
+                input.form-control(type="text", placeholder="Enter a task...", ng-model="taskData.text", required)
+                button.btn.btn-primary(type="submit", ng-disabled="!form.$valid") {{ taskData.id ? 'Update task' : 'Add task' }}

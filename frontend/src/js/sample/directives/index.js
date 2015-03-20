@@ -1,1 +1,0 @@
-require('./task-list-directive');

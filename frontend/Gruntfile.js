@@ -23,8 +23,8 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'src',
-          src: ['templates/**/*.jade'],
-          dest: 'dist/',
+          src: ['js/**/*.jade'],
+          dest: 'dist/templates',
           ext: '.html'
         }]
       }
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
     //watch sources and recompile on change
     watch: {
       templates: {
-        files: ['src/templates/**/*.jade'],
+        files: ['src/js/**/*.jade'],
         tasks: ['templates']
       },
       css: {
