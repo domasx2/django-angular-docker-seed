@@ -1,2 +1,2 @@
 require('./home-controller');
-require('./home');
+require('./home-routes');

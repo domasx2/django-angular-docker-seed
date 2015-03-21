@@ -1,2 +1,2 @@
 require('./task-edit-controller');
-require('./task-edit');
+require('./task-edit-routes');
