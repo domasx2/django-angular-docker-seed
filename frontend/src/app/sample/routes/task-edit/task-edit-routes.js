@@ -2,7 +2,7 @@ angular.module('myapp').config(function(RouteServiceProvider) {
     RouteServiceProvider.when({
         name: 'edit-task',
         url: '/task/:id',
-        templateUrl: 'js/app/routes/task-edit/task-edit.html',
+        templateUrl: 'sample/routes/task-edit/task-edit.html',
         controller: 'TaskEditController',
         controllerAs: 'ctrl',
         resolve: {

@@ -57,11 +57,12 @@ Project layout
 ```sh
 #the important stuff: 
 
-frontend/src        # angular application
-frontend/bower.json # frontend dependency bower config
-backend/apps        # custom backend django apps
-backend/conf        # django config files
-requirements.txt    # python dependencies
+frontend/src/app         # angular application
+frontend/src/stylesheets # stylus stylesheets
+frontend/bower.json      # frontend dependency bower config
+backend/apps             # custom backend django apps
+backend/conf             # django config files
+requirements.txt         # python dependencies
 ```
 
 

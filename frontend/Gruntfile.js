@@ -22,8 +22,8 @@ module.exports = function(grunt) {
       compile: {
         files: [{
           expand: true,
-          cwd: 'src',
-          src: ['js/**/*.jade'],
+          cwd: 'src/app',
+          src: ['**/*.jade'],
           dest: 'dist/templates',
           ext: '.html'
         }]
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
     //watch sources and recompile on change
     watch: {
       templates: {
-        files: ['src/js/**/*.jade'],
+        files: ['src/app/**/*.jade'],
         tasks: ['templates']
       },
       css: {
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
         tasks: ['stylus:compile']
       },
       javascript: {
-        files: ['src/js/**/*.js'],
+        files: ['src/app/**/*.js'],
         tasks: ['jshint', 'javascript']
       },
       options: {
@@ -62,7 +62,7 @@ module.exports = function(grunt) {
     browserify: {
       dist: {
         files: {
-          'dist/app.js': ['src/js/index.js']
+          'dist/app.js': ['src/app/index.js']
         }
       },
       options: {
@@ -107,7 +107,7 @@ module.exports = function(grunt) {
 
     //validate javascript
     jshint: {
-      all: ['src/js/**/*.js'],
+      all: ['src/app/**/*.js'],
       options: {
         browser: true,
         devel: true,
