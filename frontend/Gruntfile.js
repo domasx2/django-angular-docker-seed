@@ -72,6 +72,18 @@ module.exports = function(grunt) {
       }
     },
 
+    ngAnnotate: {
+        options: {
+            singleQuotes: true,
+        },
+        app: {
+            files: {
+                'dist/app.js': ['dist/app.js']
+            },
+        },
+    },
+
+
     //extract source maps
     exorcise: {
       bundle: {
@@ -128,9 +140,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-bower-concat');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-ng-annotate');
 
   grunt.task.registerTask('templates', ['jade:compile', 'ngtemplates:myapp', 'clean:templates']);
-  grunt.task.registerTask('javascript', ['browserify:dist', 'exorcise']);
+  grunt.task.registerTask('javascript', ['browserify:dist', 'ngAnnotate:app', 'exorcise']);
 
   grunt.task.registerTask('build', ['clean:dist', 'copy:bower', 'bower_concat:all', 'templates', 'stylus:compile', 'javascript']);
   grunt.task.registerTask('develop', ['build', 'watch']);

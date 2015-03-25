@@ -15,12 +15,12 @@
     "grunt-bower-concat": "^0.4.0",
     "grunt-browserify": "^3.5.0",
     "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.8.0",
     "grunt-contrib-jade": "^0.14.1",
+    "grunt-contrib-jshint": "^0.11.0",
     "grunt-contrib-stylus": "^0.20.0",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-contrib-jshint": "^0.11.0",
     "grunt-exorcise": "^1.0.0",
-    "grunt-contrib-jshint": "^0.11.0",
-    "grunt-contrib-copy": "^0.8.0"
+    "grunt-ng-annotate": "^0.10.0"
   }
 }
