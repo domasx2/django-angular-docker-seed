@@ -63,6 +63,7 @@ frontend/bower.json      # frontend dependency bower config
 backend/apps             # custom backend django apps
 backend/conf             # django config files
 requirements.txt         # python dependencies
+e2e-tests/specs          # e2e tests
 ```
 
 
@@ -84,8 +85,35 @@ docker-compose run django createsuperuser
 docker-compose run django makemigrations [app name]
 ```
 
+End to end tests
+=================
+
+Angular's default e2e test framework [protractor](https://github.com/angular/protractor) is used in conjunction with django test server.
+
+### install deps
+
+```sh
+cd e2e-tests
+npm install
+```
+
+### run
+To run end to end tests, you will need to start django test server and then run protractor.
+See [https://docs.djangoproject.com/en/1.7/ref/django-admin/](https://docs.djangoproject.com/en/1.7/ref/django-admin/) for more about testserver command, [https://docs.djangoproject.com/en/1.7/howto/initial-data/](https://docs.djangoproject.com/en/1.7/howto/initial-data/) about test data fixtures
+
+Start django test server:
+```sh
+docker-compose run --service-ports django testserver --noinput  testdata.yaml --addrport 0.0.0.0:8000
+```
+
+Run tests:
+```sh
+./e2e-tests/node_modules/protractor/bin/protractor e2e-tests/protractor.conf.js 
+```
+
+
 Todo:
 =============
-unit, e2e testing setup
+unit test setup
 document usage on windows
 document database management workflow (shell, backup/restore)  

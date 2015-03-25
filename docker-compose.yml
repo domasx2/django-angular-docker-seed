@@ -27,3 +27,5 @@ django:
         - "frontend:/static"
     links:
         - db
+    environment:
+        PYTHONUNBUFFERED: 1

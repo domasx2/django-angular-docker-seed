@@ -2,6 +2,8 @@
 __pycache__/
 *.py[cod]
 
+node_modules
+
 # build artifacts
 /frontend/dist
 *sublime*
