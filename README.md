@@ -85,10 +85,21 @@ docker-compose run django createsuperuser
 docker-compose run django makemigrations [app name]
 ```
 
+Unit tests
+=================
+See [https://docs.djangoproject.com/en/1.7/topics/testing/overview/](https://docs.djangoproject.com/en/1.7/topics/testing/overview/)
+Sample app includes sample tests at backend/apps/sampleapp/tests.py
+
+### run
+
+```sh
+docker-compose run django test --noinput
+```
+
 End to end tests
 =================
 
-Angular's default e2e test framework [protractor](https://github.com/angular/protractor) is used in conjunction with django test server.
+Angular's default e2e test framework [protractor](https://github.com/angular/protractor) is used in conjunction with django test server. Test specs are located at e2e-tests/specs/
 
 ### install deps
 
@@ -114,6 +125,5 @@ Run tests:
 
 Todo:
 =============
-unit test setup
 document usage on windows
 document database management workflow (shell, backup/restore)  
