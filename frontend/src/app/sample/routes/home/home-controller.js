@@ -5,7 +5,7 @@ angular.module('myapp')
 
         this.edit = function(index) {
             var task = $scope.tasks.splice(index, 1)[0];
-            RouteService.open('edit-task', {id: task.id});
+            RouteService.open('edit-task', task);
         };
 
         this.remove = function(index) {

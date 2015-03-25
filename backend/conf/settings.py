@@ -96,3 +96,7 @@ STATICFILES_DIRS = (
 )
 
 STATIC_URL = '/static/'
+
+REST_FRAMEWORK = {
+    'URL_FIELD_NAME': 'slug'
+}

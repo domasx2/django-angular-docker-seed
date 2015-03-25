@@ -10,6 +10,7 @@ class TaskList(generics.ListCreateAPIView):
 
 
 class TaskDetail(generics.RetrieveUpdateDestroyAPIView):
+    lookup_field = 'slug'
     queryset = Task.objects.all()
     serializer_class = TaskSerializer
 
