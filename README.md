@@ -1,14 +1,17 @@
-Django + Angular seed project w. docker dev environment
+Django + Angular seed project w. Docker
 =====================================================
+This is a seed repo intended to bootstrap django + angular project development. It uses docker for dev environment and contains a small sample application.
 
-Stack:
+Stack
+=============
 * Python 3.4
 * PostgreSQL
-* Django web framework
-* Jade templates
+* Django
+* Jade template engine
 * Stylus css preprocessor
 * AngularJS frontend framework
 * Bootstrap3  css framework
+* Grunt based frontend build system
 
 
 Installation
@@ -50,6 +53,14 @@ docker-compose up
 
 App should be up on [http://localhost:8000](http://localhost:8000/)
 
+Build frontend
+==============
+
+```sh
+docker-compose run frontend build
+```
+
+Frontend is built to frontend/dist
 
 Project layout
 ===============
