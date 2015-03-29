@@ -14,7 +14,7 @@
                     | {{task.text}}
                 a.remove(ng-click="ctrl.remove($index)", title="remove")
                     i.glyphicon.glyphicon-remove
-                a.edit(ng-click="ctrl.edit($index)", title="edit")
+                a.edit(named-route="'edit-task'", route-params="task")
                     i.glyphicon.glyphicon-edit    
         p(ng-if="!tasks.length") No tasks yet. Please enter one
         form(name="form")

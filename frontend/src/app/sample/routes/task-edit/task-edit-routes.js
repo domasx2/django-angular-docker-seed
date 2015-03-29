@@ -1,7 +1,6 @@
-angular.module('myapp').config(function(RouteServiceProvider) {
-    RouteServiceProvider.when({
+angular.module('myapp').config(function($routeProvider) {
+    $routeProvider.when('/task/:slug', {
         name: 'edit-task',
-        url: '/task/:slug',
         templateUrl: 'sample/routes/task-edit/task-edit.html',
         controller: 'TaskEditController',
         controllerAs: 'ctrl',
