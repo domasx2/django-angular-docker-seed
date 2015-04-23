@@ -5,7 +5,10 @@ VOLUME ["/src"]
 
 ADD package.json .
 ADD bower.json .
+ADD .bowerrc .
+
 RUN npm install grunt-cli bower -g && npm install && bower --allow-root install -p
-ADD Gruntfile.js .
-ENTRYPOINT ["grunt"]
-CMD ["develop"]
+
+RUN rm /package.json && rm /bower.json
+
+CMD ["grunt", "develop"]

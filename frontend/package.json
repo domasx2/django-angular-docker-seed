@@ -8,7 +8,7 @@
   },
   "author": "domasx2@gmail.com (https://github.com/domasx2)",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "bower": "^1.3.12",
     "grunt": "^0.4.5",
     "grunt-angular-templates": "^0.5.7",

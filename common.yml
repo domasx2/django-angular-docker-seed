@@ -1,0 +1,9 @@
+db_base:
+    image: postgres
+    environment:
+        POSTGRES_USER: django
+        POSTRES_PASSWORD: django123
+django_base:
+    build: .
+    environment:
+        PYTHONUNBUFFERED: 1

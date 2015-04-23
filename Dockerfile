@@ -7,6 +7,6 @@ RUN mkdir static
 VOLUME ["/static"]
 
 WORKDIR /src
-EXPOSE 8000
+EXPOSE 9123
 ENTRYPOINT ["python3", "manage.py"]
-CMD ["runserver", "0.0.0.0:8000"]
+CMD ["runserver", "0.0.0.0:9123"]

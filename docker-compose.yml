@@ -3,23 +3,28 @@ dbdata:
     command: true
 
 db:
-    image: postgres
-    environment:
-        POSTGRES_USER: django
-        POSTRES_PASSWORD: django123
+    extends: 
+        file: common.yml
+        service: db_base
     volumes_from:
         - dbdata
     ports:
         - "9432:5432"
 frontend:
     build: frontend/
+    command: grunt develop
     ports:
         - "35729:35729"
     volumes:
         - "frontend/src:/src"
         - "frontend/dist:/dist"
+        - "frontend/package.json:/package.json"
+        - "frontend/bower.json:/bower.json"
+        - "frontend/Gruntfile.js:/Gruntfile.js"
 django:
-    build: .
+    extends: 
+        file: common.yml
+        service: django_base
     ports:
         - "8000:8000"
     volumes:
@@ -28,4 +33,4 @@ django:
     links:
         - db
     environment:
-        PYTHONUNBUFFERED: 1
+        DJANGO_SETTINGS_MODULE: conf.settings

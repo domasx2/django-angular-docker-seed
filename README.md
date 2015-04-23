@@ -5,6 +5,11 @@ Django + Angular seed project w. Docker
 =====================================================
 This is a seed repo intended to bootstrap django + angular project development. It uses docker for dev environment and contains a small sample application.
 
+Requirements
+=============
+Docker 1.6
+Docker-compose 1.2
+
 Stack
 =============
 * Python 3.4
@@ -47,8 +52,11 @@ Build and run
 #build images
 docker-compose build
 
+#initialize database
+docker-compose run db postgres --version
+
 #run initial schema & data migrations
-docker-compose run django syncdb
+docker-compose run django migrate
 
 #start containers
 docker-compose up
@@ -60,10 +68,24 @@ Build frontend
 ==============
 
 ```sh
-docker-compose run frontend build
+docker-compose run frontend grunt build
 ```
 
 Frontend is built to frontend/dist
+
+Manage frontend dependencies
+===============
+
+Install new bower package:
+
+```sh
+docker-compose run frontend bower install [package] --save --allow-root
+```
+
+Install new node package:
+
+Add it to frontend/pacakge.json and run `docker-compose build frontend`
+Running npm install from 
 
 Project layout
 ===============
@@ -122,13 +144,20 @@ cd e2e-tests
 npm install
 ```
 
+### set up docker services
+
+```sh
+docker-compose -f docker-compose-e2e-test.yml build
+docker-compose -f docker-compose-e2e-test.yml run dbe2e postgres --version
+```
+
 ### run
 To run end to end tests, you will need to start django test server and then run protractor.
 See [https://docs.djangoproject.com/en/1.7/ref/django-admin/](https://docs.djangoproject.com/en/1.7/ref/django-admin/) for more about testserver command, [https://docs.djangoproject.com/en/1.7/howto/initial-data/](https://docs.djangoproject.com/en/1.7/howto/initial-data/) about test data fixtures
 
-Start django test server:
+Start test server:
 ```sh
-docker-compose run --service-ports django testserver --noinput  testdata.yaml --addrport 0.0.0.0:8000
+docker-compose -f docker-compose-e2e-test.yml up
 ```
 
 Run tests:
@@ -139,5 +168,5 @@ Run tests:
 
 Todo:
 =============
-document usage on windows
+document usage on windows  
 document database management workflow (shell, backup/restore)  

@@ -1,0 +1,24 @@
+dbdatae2e:
+    image: postgres
+    command: true
+
+dbe2e:
+    extends: 
+        file: common.yml
+        service: db_base
+    volumes_from:
+        - dbdatae2e
+djangoe2e:
+    extends: 
+        file: common.yml
+        service: django_base
+    command: testserver --noinput  testdata.yaml --addrport 0.0.0.0:8000
+    ports:
+        - "8001:8000"
+    volumes:
+        - "backend:/src"
+        - "frontend:/static"
+    links:
+        - dbe2e
+    environment:
+        DJANGO_SETTINGS_MODULE: conf.settings_e2e
