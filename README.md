@@ -135,37 +135,33 @@ docker-compose run django test --noinput
 End to end tests
 =================
 
-Angular's default e2e test framework [protractor](https://github.com/angular/protractor) is used in conjunction with django test server. Test specs are located at e2e-tests/specs/
+Angular's default e2e test framework [protractor](https://github.com/angular/protractor) is used in conjunction with django test server.  
+Test specs are located at e2e-tests/specs/  
+Django e2e test config at backend/conf/settings_e2e.py  
 
-### install deps
+To setup & run e2e tests, run:  
+```
+./run-e2e-tests.sh
+```
+
+Or if you want to do it manually:
 
 ```sh
+#install test dependencies
 cd e2e-tests
 npm install
-```
+cd ..
 
-### set up docker services
-
-```sh
+#set up docker services
 docker-compose -f docker-compose-e2e-test.yml build
 docker-compose -f docker-compose-e2e-test.yml run dbe2e postgres --version
-```
 
-### run
-To run end to end tests, you will need to start django test server and then run protractor.
-See [https://docs.djangoproject.com/en/1.7/ref/django-admin/](https://docs.djangoproject.com/en/1.7/ref/django-admin/) for more about testserver command, [https://docs.djangoproject.com/en/1.7/howto/initial-data/](https://docs.djangoproject.com/en/1.7/howto/initial-data/) about test data fixtures
-
-Start test server:
-```sh
+#start test server
 docker-compose -f docker-compose-e2e-test.yml up
-```
 
-Run tests:
-```sh
+#run protractor tests
 ./e2e-tests/node_modules/protractor/bin/protractor e2e-tests/protractor.conf.js 
 ```
-
-
 Todo:
 =============
 document usage on windows  
