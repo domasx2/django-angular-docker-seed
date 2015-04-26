@@ -12,15 +12,17 @@ db:
         - "9432:5432"
 frontend:
     build: frontend/
-    command: grunt develop
+    command: gulp develop
     ports:
         - "35729:35729"
     volumes:
         - "frontend/src:/src"
         - "frontend/dist:/dist"
+        - "frontend/fonts:/fonts"
+        - "frontend/images:/images"
         - "frontend/package.json:/package.json"
         - "frontend/bower.json:/bower.json"
-        - "frontend/Gruntfile.js:/Gruntfile.js"
+        - "frontend/Gulpfile.js:/Gulpfile.js"
 django:
     extends: 
         file: common.yml
@@ -29,7 +31,7 @@ django:
         - "8000:8000"
     volumes:
         - "backend:/src"
-        - "frontend:/static"
+        - "frontend/dist:/static"
     links:
         - db
     environment:

@@ -18,5 +18,18 @@
     "angular-route": "~1.3.15",
     "angular-named-route": "~1.3.15",
     "angular-resource": "~1.3.15"
+  },
+  "overrides": {
+    "bootstrap": {
+        "main": [
+            "dist/css/bootstrap.min.css",
+            "dist/css/bootstrap-theme.min.css",
+            "dist/fonts/glyphicons-halflings-regular.eot",
+            "dist/fonts/glyphicons-halflings-regular.svg",
+            "dist/fonts/glyphicons-halflings-regular.ttf",
+            "dist/fonts/glyphicons-halflings-regular.woff",
+            "dist/fonts/glyphicons-halflings-regular.woff2"
+        ]
+    }
   }
 }

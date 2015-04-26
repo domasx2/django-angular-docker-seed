@@ -7,15 +7,15 @@
     <meta charset="utf-8">
     <base href="/">
     <title>My application</title>
-    <link rel="stylesheet" href="{% static 'dist/bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}">
     {# <link rel="stylesheet" href="{% static 'dist/bower.css' %}"> #}
-    <link rel="stylesheet" href="{% static 'dist/style.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
     {% block "content" %}{% endblock %}
-    <script src="{% static 'dist/bower.js' %}"></script>
-    <script src="{% static 'dist/app.js' %}"></script>
-    <script src="{% static 'dist/templates.js' %}"></script>
+    <script src="{% static 'bower.js' %}"></script>
+    <script src="{% static 'app.js' %}"></script>
+    <script src="{% static 'templates.js' %}"></script>
     <script>
         //insert livereload snippet on localhost TODO: on debug instead
         if(location.host.split(':')[0] === 'localhost' ) {

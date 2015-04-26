@@ -20,4 +20,4 @@
         form(name="form")
             .form-group
                 input.form-control(type="text", placeholder="Enter a task...", ng-model="new_task.text", required)
-                button(type="submit").btn.btn-primary(ng-click="ctrl.save()", ng-disabled="!form.$valid") {{ new_task.id ? 'Update task' : 'Add task' }}
+                button.btn.btn-primary(type="submit", ng-click="ctrl.save()", ng-disabled="!form.$valid") {{ new_task.id ? 'Update task' : 'Add task' }}

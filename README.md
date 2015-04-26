@@ -19,7 +19,7 @@ Stack
 * Stylus css preprocessor
 * AngularJS frontend framework
 * Bootstrap3  css framework
-* Grunt based frontend build system
+* Gulp based frontend build system
 
 
 Installation
@@ -66,9 +66,13 @@ App should be up on [http://localhost:8000](http://localhost:8000/)
 
 Build frontend
 ==============
-
+For dev:
 ```sh
-docker-compose run frontend grunt build
+docker-compose run frontend gulp build
+```
+For production (sources are uglified):
+```sh
+docker-compose run frontend gulp build-prod
 ```
 
 Frontend is built to frontend/dist
@@ -85,7 +89,7 @@ docker-compose run frontend bower install [package] --save --allow-root
 Install new node package:
 
 Add it to frontend/pacakge.json and run `docker-compose build frontend`
-Running npm install from 
+Running npm install from docker does not work currently
 
 Project layout
 ===============

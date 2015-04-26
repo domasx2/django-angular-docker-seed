@@ -12,12 +12,12 @@ djangoe2e:
     extends: 
         file: common.yml
         service: django_base
-    command: testserver --noinput  testdata.yaml --addrport 0.0.0.0:8000
+    command: testserver --noinput --addrport 0.0.0.0:8000  testdata.yaml 
     ports:
         - "8001:8000"
     volumes:
         - "backend:/src"
-        - "frontend:/static"
+        - "frontend/dist:/static"
     links:
         - dbe2e
     environment:
