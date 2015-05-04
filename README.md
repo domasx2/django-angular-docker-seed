@@ -20,6 +20,8 @@ Stack
 * AngularJS frontend framework
 * Bootstrap3  css framework
 * Gulp based frontend build system
+* Gunicorn app server
+* Nginx web server
 
 
 Installation
@@ -64,6 +66,25 @@ docker-compose up
 
 App should be up on [http://localhost:8000](http://localhost:8000/)
 
+Run in production
+==============
+
+```sh
+# this will git pull,
+# stop containers,
+# build docker images,
+# build frontend,
+# collect django static files,
+# run migrations,
+# restart containers
+
+./deploy.sh
+```
+
+TODO:  
+add log rotation  
+add backups on deploy  
+
 Build frontend
 ==============
 For dev:
@@ -104,6 +125,9 @@ backend/apps             # custom backend django apps
 backend/conf             # django config files
 requirements.txt         # python dependencies
 e2e-tests/specs          # e2e tests
+logs/*                   # nginx, gunicorn, app logs for production
+gunicorn.conf.py         # gunicorn config for production
+nginx.conf               # nginx config for production
 ```
 
 
