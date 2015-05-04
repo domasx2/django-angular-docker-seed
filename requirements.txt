@@ -9,3 +9,6 @@ djangorestframework==3.1.0
 
 #yaml for fixtures
 PyYAML==3.11
+
+#appserver
+gunicorn==19.3.0
