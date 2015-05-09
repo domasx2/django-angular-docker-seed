@@ -1,9 +1,9 @@
 #!/bin/bash
 #this will start test server, start tests then stop test server
 
-DOCKER_CONFIG=docker-compose-e2e-test.yml
-PTOR_CONFIG=e2e-tests/protractor.conf.js
-TEST_SERVER_URL=http://localhost:8001
+DOCKER_CONFIG=${DOCKER_CONFIG:-docker-compose-e2e-test.yml}
+PTOR_CONFIG=${PTOR_CONFIG:-e2e-tests/protractor.conf.js}
+TEST_SERVER_URL=${TEST_SERVER_URL:-http://localhost:8001}
 
 if [ $(docker-compose -f $DOCKER_CONFIG ps | grep "djangoe2e" | grep "Up" | wc -l) != 0 ]; then
     echo "stopping running containers"

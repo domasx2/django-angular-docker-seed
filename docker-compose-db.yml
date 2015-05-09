@@ -1,0 +1,17 @@
+dbdata:
+    image: postgres
+    command: true
+
+db:
+    extends: 
+        file: common.yml
+        service: db_base
+    volumes_from:
+        - dbdata 
+psql:
+    image: postgres
+    command: psql -h db -U django django
+    links:
+        - db
+    volumes:
+        - "backups:/backups"

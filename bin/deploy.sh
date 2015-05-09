@@ -1,6 +1,10 @@
-DOCKER_CONFIG=docker-compose-prod.yml
+#!/bin/bash
+# stops production server, rebuilds images, builds frontend, runs migrations, starts production server on :80
+
+DOCKER_CONFIG=${DOCKER_CONFIG:-docker-compose-prod.yml}
 
 docker-compose -f $DOCKER_CONFIG stop
+./bin/db_backup.sh _pre_deploy
 docker-compose build frontend
 docker-compose run frontend gulp build-prod
 

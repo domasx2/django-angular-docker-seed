@@ -9,3 +9,4 @@ node_modules
 *sublime*
 
 logs/*/*.log
+backups/*.bak

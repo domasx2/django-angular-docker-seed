@@ -1,13 +1,13 @@
-dbdataprod:
+dbdata:
     image: postgres
     command: true
 
-dbprod:
+db:
     extends: 
         file: common.yml
         service: db_base
     volumes_from:
-        - dbdataprod
+        - dbdata    
 djangoprod:
     extends: 
         file: common.yml
@@ -17,11 +17,11 @@ djangoprod:
     volumes:
         - "backend:/src"
         - "frontend/dist:/static"
-        - "gunicorn.conf.py:/src/gunicorn.conf.py:ro"
+        - "conf/gunicorn.conf.py:/src/gunicorn.conf.py:ro"
         - "logs/gunicorn:/tmp/logs/gunicorn"
         - "logs/app:/tmp/logs/app"
     links:
-        - dbprod
+        - db
     environment:
         DJANGO_SETTINGS_MODULE: conf.settings_prod
         NUM_WORKERS: 4
@@ -31,7 +31,7 @@ nginxprod:
         - djangoprod
     volumes: 
         - "frontend/dist:/static"
-        - "nginx.conf:/etc/nginx/nginx.conf:ro"
+        - "conf/nginx.conf:/etc/nginx/nginx.conf:ro"
         - "logs/nginx:/tmp/logs"
     ports:
         - "80:80"
