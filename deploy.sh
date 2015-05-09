@@ -1,7 +1,6 @@
 DOCKER_CONFIG=docker-compose-prod.yml
 
-git pull
-docker-compose -f docker-compose-prod.yml stop
+docker-compose -f $DOCKER_CONFIG stop
 docker-compose build frontend
 docker-compose run frontend gulp build-prod
 

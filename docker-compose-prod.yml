@@ -12,8 +12,6 @@ djangoprod:
     extends: 
         file: common.yml
         service: django_base
-    ports:
-        - "8000:8000"
     entrypoint: []
     command: gunicorn -c gunicorn.conf.py wsgi:application
     volumes:
