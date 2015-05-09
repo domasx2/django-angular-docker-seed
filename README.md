@@ -89,10 +89,17 @@ add log rotation
 Run django management commands
 ==============
 ```
-./bin/django_admin.sh makemigrations sampleapp #create migrations
-./bin/django_admin.sh migrate #apply migrations
-./bin/django_admin.sh shell #access django shell
-./bin/django_admin.sh createsuperuser #create new admin user
+# create migrations
+./bin/django_admin.sh makemigrations sampleapp 
+
+#apply migrations
+./bin/django_admin.sh migrate 
+
+#access django shell
+./bin/django_admin.sh shell 
+
+#create new admin user
+./bin/django_admin.sh createsuperuser 
 # etc
 ```
 
