@@ -13,11 +13,11 @@ djangoprod:
         file: common.yml
         service: django_base
     entrypoint: []
-    command: gunicorn -c gunicorn.conf.py wsgi:application
+    command: gunicorn -c /etc/gunicorn/gunicorn.conf.py wsgi:application
     volumes:
         - "backend:/src"
         - "frontend/dist:/static"
-        - "conf/gunicorn.conf.py:/src/gunicorn.conf.py:ro"
+        - "conf/gunicorn.conf.py:/etc/gunicorn/gunicorn.conf.py:ro"
         - "logs/gunicorn:/tmp/logs/gunicorn"
         - "logs/app:/tmp/logs/app"
     links:
