@@ -145,24 +145,6 @@ backups/                      # database backups
 ```
 
 
-Django management commands
-==================
-
-```sh
-# run any dango management command:
-
-docker-compose run django [command]
-
-# schema & data migrations
-docker-compose run django syncdb
-
-# create a super user
-docker-compose run django createsuperuser
-
-# create migrations
-docker-compose run django makemigrations [app name]
-```
-
 Unit tests
 =================
 See [https://docs.djangoproject.com/en/1.ū/topics/testing/overview/](https://docs.djangoproject.com/en/1.7/topics/testing/overview/)  
