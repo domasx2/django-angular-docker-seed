@@ -20,6 +20,7 @@ var NG_MODULE_NAME = 'myapp';
 
 var PATHS = {
     STYL: 'src/stylesheets/style.styl',
+    STYL_ALL: 'src/stylesheets/**/*.styl',
     JS: 'src/app/**/*.js',
     JSMAIN: 'src/app/index.js',
     JADE: 'src/app/**/*.jade'
@@ -122,7 +123,7 @@ gulp.task('uglify',  function () {
 //watch sources and rebuild
 gulp.task('watch', function () {
     livereload.listen();
-    gulp.watch(PATHS.STYL, ['stylus']);
+    gulp.watch(PATHS.STYL_ALL, ['stylus']);
     gulp.watch(PATHS.JS, ['javascript']);
     gulp.watch(PATHS.JADE, ['templates']);
 });
