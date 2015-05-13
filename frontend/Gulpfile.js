@@ -13,7 +13,8 @@ var gulp = require('gulp'),
     mainBowerFiles = require('main-bower-files'),
     uglify = require('gulp-uglify'),
     runSequence = require('run-sequence'),
-    livereload = require('gulp-livereload');
+    livereload = require('gulp-livereload'),
+    plumber = require('gulp-plumber');
 
 
 var NG_MODULE_NAME = 'myapp';
@@ -35,6 +36,7 @@ gulp.task('cleanDist', function(cb) {
 //compile stylus to css
 gulp.task('stylus', function () {
     return gulp.src(PATHS.STYL)
+        .pipe(plumber())
         .pipe(stylus())
         .pipe(gulp.dest('dist'))
         .pipe(livereload());
@@ -56,6 +58,7 @@ gulp.task('jshint', function () {
 //compile templates
 gulp.task('templates', function () {
     return gulp.src(PATHS.JADE)
+        .pipe(plumber())
         .pipe(jade())
         .pipe(ngHtml2Js({
             moduleName: NG_MODULE_NAME
@@ -69,10 +72,14 @@ gulp.task('templates', function () {
 gulp.task('javascript', ['jshint'], function () {
 
     var browserified = transform(function(filename) {
-        return browserify({entries: filename}).bundle();
+        return browserify({entries: filename}).bundle().on('error', function (err) {
+            console.error(err.toString());
+            this.emit("end");
+        });
     });
 
     return gulp.src(PATHS.JSMAIN)
+        .pipe(plumber())
         .pipe(browserified)
         .pipe(ngAnnotate())
         .pipe(rename('app.js'))
