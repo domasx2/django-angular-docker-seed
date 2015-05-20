@@ -103,6 +103,8 @@ Run django management commands
 # etc
 ```
 
+for production use /bin/django_admin_prod.sh
+
 Build frontend
 ==============
 In case you want to build forntend separately, to host it on cdn or whatevs:   

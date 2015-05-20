@@ -22,10 +22,12 @@ if  ! [ -d e2e-tests/node_modules ]; then
     cd ..
 fi
 
+docker-compose build frontend
 docker-compose run frontend gulp build
 
 #start testserver in background
 echo "starting test server"
+docker-compose -f $DOCKER_CONFIG build
 docker-compose -f $DOCKER_CONFIG up -d
 
 #wait until django starts
