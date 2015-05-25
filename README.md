@@ -1,6 +1,6 @@
-[![Dependency Status](https://www.versioneye.com/user/projects/551d7c9c971f7847ca000010/badge.svg?style=flat)](https://www.versioneye.com/user/projects/551d7c9c971f7847ca000010)
-[![Dependency Status](https://www.versioneye.com/user/projects/551d7ca6971f78433900000e/badge.svg?style=flat)](https://www.versioneye.com/user/projects/551d7ca6971f78433900000e)
-[![Dependency Status](https://www.versioneye.com/user/projects/551d7ca0971f781c48000005/badge.svg?style=flat)](https://www.versioneye.com/user/projects/551d7ca0971f781c48000005)
+bower: [![Dependency Status](https://www.versioneye.com/user/projects/551d7c9c971f7847ca000010/badge.svg?style=flat)](https://www.versioneye.com/user/projects/551d7c9c971f7847ca000010)
+python: [![Dependency Status](https://www.versioneye.com/user/projects/551d7ca6971f78433900000e/badge.svg?style=flat)](https://www.versioneye.com/user/projects/551d7ca6971f78433900000e)
+node: [![Dependency Status](https://www.versioneye.com/user/projects/551d7ca0971f781c48000005/badge.svg?style=flat)](https://www.versioneye.com/user/projects/551d7ca0971f781c48000005)
 
 Django + Angular seed project w. Docker
 =====================================================
