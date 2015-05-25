@@ -12,7 +12,7 @@ fi
 
 if  [ $(docker-compose -f $DOCKER_CONFIG ps | grep "dbdatae2e" | wc -l) == 0 ]; then
     echo "initializing db"
-    docker-compose -f $DOCKER_CONFIG run dbe2e postgres --version
+    docker-compose -f $DOCKER_CONFIG run --rm dbe2e postgres --version
 fi
 
 if  ! [ -d e2e-tests/node_modules ]; then
@@ -23,7 +23,7 @@ if  ! [ -d e2e-tests/node_modules ]; then
 fi
 
 docker-compose build frontend
-docker-compose run frontend gulp build
+docker-compose run --rm frontend gulp build
 
 #start testserver in background
 echo "starting test server"

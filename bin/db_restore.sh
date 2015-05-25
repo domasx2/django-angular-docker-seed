@@ -14,7 +14,7 @@ if [ $(docker-compose -f $DOCKER_CONFIG ps | grep "db" | grep "Up" | wc -l) != 0
     exit 1
 fi
 
-docker-compose -f $DOCKER_CONFIG run psql dropdb -h db -U django django
-docker-compose -f $DOCKER_CONFIG run psql createdb -h db -U django -O django django
-docker-compose -f $DOCKER_CONFIG run psql pg_restore -Fc -h db -U django -d django $BACKUP_FILE
+docker-compose -f $DOCKER_CONFIG run --rm psql dropdb -h db -U django django
+docker-compose -f $DOCKER_CONFIG run --rm psql createdb -h db -U django -O django django
+docker-compose -f $DOCKER_CONFIG run --rm psql pg_restore -Fc -h db -U django -d django $BACKUP_FILE
 echo "backup restored"
