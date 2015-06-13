@@ -16,6 +16,7 @@ djangoprod:
     command: gunicorn -c /etc/gunicorn/gunicorn.conf.py wsgi:application
     volumes:
         - "backend:/src"
+        - "media:/media"
         - "frontend/dist:/static"
         - "conf/gunicorn.conf.py:/etc/gunicorn/gunicorn.conf.py:ro"
         - "logs/gunicorn:/tmp/logs/gunicorn"

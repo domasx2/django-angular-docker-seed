@@ -32,6 +32,7 @@ django:
     volumes:
         - "backend:/src"
         - "frontend/dist:/static"
+        - "media:/media"
     links:
         - db
     environment:

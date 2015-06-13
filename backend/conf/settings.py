@@ -109,6 +109,12 @@ STATICFILES_DIRS = (
 
 STATIC_URL = '/static/'
 
+# User uploads
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = '/media/'
+
 REST_FRAMEWORK = {
     'URL_FIELD_NAME': 'slug'
 }

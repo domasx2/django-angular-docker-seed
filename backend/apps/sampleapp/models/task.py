@@ -18,9 +18,3 @@ class Task(models.Model):
                 i += 1
             self.slug = slug
         super(Task, self).save(*args, **kwargs)
-
-class Upload(models.Model):
-    upload = models.FileField()
-
-    def __str__(self):
-        return self.upload.name

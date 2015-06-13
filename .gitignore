@@ -11,3 +11,4 @@ node_modules
 
 logs/*/*.log
 backups/*.bak
+media/*

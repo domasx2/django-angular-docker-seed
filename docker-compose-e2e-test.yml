@@ -18,6 +18,7 @@ djangoe2e:
     volumes:
         - "backend:/src"
         - "frontend/dist:/static"
+        - "media:/media"
     links:
         - dbe2e
     environment:
