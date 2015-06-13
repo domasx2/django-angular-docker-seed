@@ -6,6 +6,7 @@ node_modules
 
 # build artifacts
 /frontend/dist
+/frontend/bower_components
 *sublime*
 
 logs/*/*.log
