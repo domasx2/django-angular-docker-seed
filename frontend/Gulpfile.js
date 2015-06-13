@@ -7,7 +7,8 @@ var gulp = require('gulp'),
     ngHtml2Js = require("gulp-ng-html2js"),
     browserify = require('browserify'),
     sourcemaps = require('gulp-sourcemaps'),
-    transform = require('vinyl-transform'),
+    source = require('vinyl-source-stream'),
+    buffer = require('vinyl-buffer'),
     ngAnnotate = require('gulp-ng-annotate'),
     rename = require("gulp-rename"),
     mainBowerFiles = require('main-bower-files'),
@@ -71,22 +72,19 @@ gulp.task('templates', function () {
 //compile angular app
 gulp.task('javascript', ['jshint'], function () {
 
-    var browserified = transform(function(filename) {
-        return browserify({entries: filename}).bundle().on('error', function (err) {
-            console.error(err.toString());
-            this.emit("end");
-        });
-    });
-
-    return gulp.src(PATHS.JSMAIN)
-        .pipe(plumber())
-        .pipe(browserified)
-        .pipe(ngAnnotate())
-        .pipe(rename('app.js'))
-        .pipe(sourcemaps.init({loadMaps: true}))
-        .pipe(sourcemaps.write('maps'))
-        .pipe(gulp.dest('./dist/'))
-        .pipe(livereload());
+    browserify({entries: PATHS.JSMAIN})
+    .bundle().on('error', function (err) {
+        console.error(err.toString());
+        this.emit("end");
+    })
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(plumber())
+    .pipe(ngAnnotate())
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(sourcemaps.write('maps'))
+    .pipe(gulp.dest('./dist/'))
+    .pipe(livereload());
 });
 
 //contact bower javascript to a single file
