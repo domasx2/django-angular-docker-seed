@@ -13,7 +13,7 @@ Docker-compose 1.2
 
 Stack
 =============
-* Python 3.4
+* Python 3.4.3
 * PostgreSQL
 * Django
 * Jade template engine
@@ -86,6 +86,18 @@ App should be up on [http://localhost](http://localhost/)
   
 TODO:  
 add log rotation  
+
+Configure SSL
+==============
+
+### Configure SSL on included nginx server
+
+1. Add your SSL key and certificat to conf/ssl
+2. Rename ssl key/cert includes in conf/nginx_ssl.conf
+3. Uncomment lines as specified by comments in docker-compose-prod.yml, conf/gunicorn.py, backend/conf/settings_prod.py
+
+### Allready running behind a SSL-enabled proxy
+1. Uncomment lines as speicifed by comments in conf/gunicorn.py, conf/nginx.conf,  backend/conf/settings_prod.py
 
 Run django management commands
 ==============
