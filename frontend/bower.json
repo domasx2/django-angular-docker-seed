@@ -14,10 +14,10 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3.4",
-    "angular-route": "~1.4.1",
-    "angular-named-route": "~1.4.1",
-    "angular-resource": "~1.4.1",
-    "angular": "~1.4.1"
+    "angular-route": "~1.4.2",
+    "angular-named-route": "~1.4.2",
+    "angular-resource": "~1.4.2",
+    "angular": "~1.4.2"
   },
   "overrides": {
     "bootstrap": {
@@ -33,6 +33,6 @@
     }
   },
   "resolutions": {
-    "angular": "~1.4.1"
+    "angular": "~1.4.2"
   }
 }
