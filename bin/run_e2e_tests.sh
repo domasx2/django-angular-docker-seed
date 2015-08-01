@@ -1,19 +1,19 @@
 #!/bin/bash
 #this will start test server, start tests then stop test server
 
-DOCKER_CONFIG=${DOCKER_CONFIG:-docker-compose-e2e-test.yml}
+export DOCKER_CONFIG=${DOCKER_CONFIG:-docker-compose-e2e-test.yml}
 PTOR_CONFIG=${PTOR_CONFIG:-e2e-tests/protractor.conf.js}
 TEST_SERVER_URL=${TEST_SERVER_URL:-http://localhost:8001}
+
+export DB_CONTAINER=dbe2e
+export DBDATA_CONTAINER=dbdatae2e
 
 if [ $(docker-compose -f $DOCKER_CONFIG ps | grep "djangoe2e" | grep "Up" | wc -l) != 0 ]; then
     echo "stopping running containers"
     docker-compose -f $DOCKER_CONFIG stop
 fi
 
-if  [ $(docker-compose -f $DOCKER_CONFIG ps | grep "dbdatae2e" | wc -l) == 0 ]; then
-    echo "initializing db"
-    docker-compose -f $DOCKER_CONFIG run --rm dbe2e postgres --version
-fi
+./bin/init_db.sh
 
 if  ! [ -d e2e-tests/node_modules ]; then
     echo "installing e2e test deps"

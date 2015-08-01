@@ -1,6 +1,6 @@
 dbdatae2e:
     image: postgres
-    command: true
+    command: "true"
 
 dbe2e:
     extends: 

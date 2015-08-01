@@ -1,6 +1,6 @@
 dbdata:
     image: postgres
-    command: true
+    command: "true"
 
 db:
     extends: 
