@@ -15,7 +15,8 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     runSequence = require('run-sequence'),
     livereload = require('gulp-livereload'),
-    plumber = require('gulp-plumber');
+    plumber = require('gulp-plumber'),
+    babelify = require('babelify');
 
 
 var NG_MODULE_NAME = 'myapp';
@@ -72,7 +73,7 @@ gulp.task('templates', function () {
 //compile angular app
 gulp.task('javascript', ['jshint'], function () {
 
-    browserify({entries: PATHS.JSMAIN})
+    browserify({entries: PATHS.JSMAIN}).transform(babelify)
     .bundle().on('error', function (err) {
         console.error(err.toString());
         this.emit("end");
