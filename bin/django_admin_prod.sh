@@ -7,4 +7,4 @@ do
 done
 
 DOCKER_CONFIG=${DOCKER_CONFIG:-docker-compose-prod.yml}
-docker-compose -f $DOCKER_CONFIG run --rm djangoprod $params
+docker-compose -f $DOCKER_CONFIG run --rm djangoprod python3 manage.py $params
