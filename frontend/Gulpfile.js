@@ -32,7 +32,9 @@ var PATHS = {
 
 //delete everything from dist before rebuild
 gulp.task('cleanDist', function(cb) {
-    del(['dist/*'], cb);
+    del(['dist/*']).then(function () {
+        cb();
+    });
 });
 
 //compile stylus to css
