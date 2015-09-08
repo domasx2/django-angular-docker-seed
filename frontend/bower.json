@@ -15,7 +15,7 @@
   "dependencies": {
     "bootstrap": "~3.3.4",
     "angular-route": "~1.4.2",
-    "angular-named-route": "~1.4.2",
+    "angular-named-route": "~2.0.0",
     "angular-resource": "~1.4.2",
     "angular": "~1.4.2"
   },
