@@ -16,13 +16,13 @@ frontend:
     ports:
         - "35729:35729"
     volumes:
-        - "frontend/src:/src"
-        - "frontend/dist:/dist"
-        - "frontend/fonts:/fonts"
-        - "frontend/images:/images"
-        - "frontend/package.json:/package.json"
-        - "frontend/bower.json:/bower.json"
-        - "frontend/Gulpfile.js:/Gulpfile.js"
+        - "./frontend/src:/src"
+        - "./frontend/dist:/dist"
+        - "./frontend/fonts:/fonts"
+        - "./frontend/images:/images"
+        - "./frontend/package.json:/package.json"
+        - "./frontend/bower.json:/bower.json"
+        - "./frontend/Gulpfile.js:/Gulpfile.js"
 django:
     extends: 
         file: common.yml
@@ -30,9 +30,9 @@ django:
     ports:
         - "8000:8000"
     volumes:
-        - "backend:/src"
-        - "frontend/dist:/static"
-        - "media:/media"
+        - "./backend:/src"
+        - "./frontend/dist:/static"
+        - "./media:/media"
     links:
         - db
     environment:

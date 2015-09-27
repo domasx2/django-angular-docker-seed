@@ -16,9 +16,9 @@ djangoe2e:
     ports:
         - "8001:8000"
     volumes:
-        - "backend:/src"
-        - "frontend/dist:/static"
-        - "media:/media"
+        - "./backend:/src"
+        - "./frontend/dist:/static"
+        - "./media:/media"
     links:
         - dbe2e
     environment:
