@@ -7,7 +7,7 @@ ADD package.json .
 ADD bower.json .
 ADD .bowerrc .
 
-RUN npm install gulp-cli bower -g && npm install && bower --allow-root install -p
+RUN npm install gulp-cli bower -g && npm install -q && bower --allow-root install -p
 
 RUN rm /package.json && rm /bower.json
 
