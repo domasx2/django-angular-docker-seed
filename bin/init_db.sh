@@ -11,7 +11,7 @@ if  [ $(docker-compose -f $DOCKER_CONFIG ps | grep $DBDATA_CONTAINER | wc -l) ==
     DB_CONTAINER_ID=$(docker-compose -f $DOCKER_CONFIG ps -q $DB_CONTAINER)
     for i in {30..0}; do
     	echo "waiting for postgres to finish initializing..."
-    	if [ $(docker logs $DB_CONTAINER_ID 2>&1 | grep "init process complete;" | wc -l) == 1 ]; then
+    	if [ $(docker logs $DB_CONTAINER_ID 2>&1 | grep "Success. You can now start the database server" | wc -l) == 1 ]; then
     		docker-compose -f $DOCKER_CONFIG stop $DB_CONTAINER
     		echo "db initialized"
     		exit 0
