@@ -2,13 +2,13 @@
 psycopg2==2.6.1
 
 #django framework itself
-Django==1.8.5
+Django==1.9
 
 #rest framework
-djangorestframework==3.2.4
+djangorestframework==3.3.1
 
 #yaml for fixtures
 PyYAML==3.11
 
 #appserver
-gunicorn==19.3.0
+gunicorn==19.4.1
